@@ -4,7 +4,7 @@ D/right arrow key : move right\
 Space : Jump\
 W : Attack\
 W multiple times : Combo attack\
-Q : Dash\
+Q : Dash
 ## Version 1 screenshots
 
 ![alt text](images/idle.png)
