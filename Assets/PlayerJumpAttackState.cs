@@ -1,0 +1,30 @@
+using JetBrains.Annotations;
+using UnityEngine;
+
+public class PlayerJumpAttackState : EntityState
+{
+    private bool touchedGround;
+
+    public PlayerJumpAttackState(StateMachine stateMachine, Player player, string animBoolName) : base(stateMachine, player, animBoolName) { }
+
+    public override void Enter()
+    {
+        base.Enter();
+        touchedGround = false;
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        if (player.groundDetected && touchedGround == false)
+        {
+            touchedGround = true;
+            anim.SetTrigger("jumpAttackTrigger");
+            player.SetVelocity(0, rb.linearVelocity.y);
+        }
+        if(triggerCalled && player.groundDetected)
+        {
+            stateMachine.ChangeState(player.idleState); 
+        }
+    }
+}
